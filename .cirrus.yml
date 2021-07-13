@@ -1,0 +1,8 @@
+env:
+  DOCKER_USERNAME: hendramanu
+  DOCKER_PASSWORD: ENCRYPTED[f2ef7b797d1d0214b03ec693840811e1648c98cae91af0cd50c79832eb14896a640539711e33e57eebaf1f2f807d0be2]
+
+docker_builder:
+  build_script: docker build --tag hendramanu/docker-image:latest .
+  login_script: docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+  push_script: docker push hendramanu/docker-image:latest
