@@ -5,7 +5,7 @@ FROM ubuntu:18.04
 RUN apt-get update -y
 
 # Install package dependencies
-RUN apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
 	bison build-essential curl flex \
 	git gnupg gperf liblz4-tool \
 	libncurses5-dev libsdl1.2-dev \
