@@ -28,13 +28,13 @@ RUN git config --global user.email "aku.hendramanu@gmail.com"
 
 # Clone compiler
 # AOSP Clang 4639204
-RUN wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/android-9.0.0_r6/clang-4639204.tar.gz && mkdir clang-4639204 && tar -zxvf clang-4639204.tar.gz -C clang-4639204 && rm clang-4639204.tar.gz.tar.gz
+RUN wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/android-9.0.0_r6/clang-4639204.tar.gz && mkdir ${HOME}/clang-4639204 && tar -zxvf clang-4639204.tar.gz -C ${HOME}/clang-4639204 && rm clang-4639204.tar.gz
 
 # AOSP gcc 4.9
-RUN git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 gcc49-64
-RUN git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 gcc49-32
+RUN git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 ${HOME}/gcc49-64
+RUN git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 ${HOME}/gcc49-32
 
 # Setup environment variables
-ENV PATH /home/hendramanu/clang-4639204/bin:/home/hendramanu/gcc49-64/bin:/home/hendramanu/gcc49-32/bin:$PATH
+ENV PATH ${HOME}/clang-4639204/bin:${HOME}/gcc49-64/bin:${HOME}/gcc49-32/bin:$PATH
 ENV KBUILD_BUILD_USER hendramanu
 ENV KBUILD_BUILD_HOST CirrusCI
