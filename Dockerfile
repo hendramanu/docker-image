@@ -17,6 +17,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
 	bzip2 git python wget \
 	gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
+# Setup repo
+curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
+chmod a+rx /usr/local/bin/repo
+
 # Setup new normal user
 RUN useradd -ms /bin/bash hendramanu
 USER hendramanu
